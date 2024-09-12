@@ -237,6 +237,24 @@ export class Runner implements vscode.Disposable {
         });
     }
 
+    public async gtkwave() {
+        vscode.workspace.findFiles(`${CONFIG.build}*.vcd`).then(files => {
+            if (files.length === 0) {
+                vscode.window.showErrorMessage('No VCD files found in build directory.');
+                return;
+            }
+
+            const vcdFile = files[0].fsPath;
+            exec(`gtkwave ${vcdFile}`, (err, stdout, stderr) => {
+                if (err) {
+                    vscode.window.showErrorMessage(`Error opening GTKWave: ${stderr}`);
+                    return;
+                }
+                vscode.window.showInformationMessage(`Opened ${vcdFile} in GTKWave`);
+            });
+        });
+    }
+ 
     private destroyWatcher() {
         if (!this.procExec) {
             this.watcher?.dispose();

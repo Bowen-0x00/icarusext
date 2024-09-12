@@ -1,12 +1,12 @@
 {
-	"name": "icarusext",
-	"displayName": "Verilog Testbench Runner",
+	"name": "icarusext-ymjr",
+	"displayName": "Verilog Testbench Runner (modified by ymjr)",
 	"description": "Simple solution to run testbench files, includes GTKWave support.",
 	"version": "1.0.3",
 	"publisher": "theonekevin",
 	"icon": "images/icon.png",
 	"author": {
-		"name": "Kevin Dai"
+		"name": "Kevin Dai (modified by ymjr)"
 	},
 	"license": "MIT (see LICENSE.txt)",
 	"homepage": "https://github.com/TheOneKevin/icarusext",
@@ -43,18 +43,29 @@
 				"title": "Get very rough estimate of logic count",
 				"icon": "$(circuit-board)",
 				"category": "Icarus"
+			},
+			{
+				"command": "icarusext.openGtkwave",
+				"title": "Open GTKWave",
+				"icon": "$(graph)",
+				"category": "Icarus"
 			}
 		],
 		"menus": {
 			"editor/title": [
 				{
 					"command": "icarusext.run",
-					"when": "resourceLangId == verilog",
+					"when": "resourceLangId == verilog || resourceLangId == systemverilog",
 					"group": "navigation@1"
 				},
 				{
 					"command": "icarusext.stop",
-					"when": "resourceLangId == verilog",
+					"when": "resourceLangId == verilog || resourceLangId == systemverilog",
+					"group": "navigation@2"
+				},
+				{
+					"command": "icarusext.openGtkwave",
+					"when": "resourceLangId == verilog || resourceLangId == systemverilog",
 					"group": "navigation@2"
 				}
 			]

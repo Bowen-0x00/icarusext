@@ -4,6 +4,7 @@ import { Runner } from './runner';
 const ICARUS_CMD_RUN = 'icarusext.run';
 const ICARUS_CMD_STOP = 'icarusext.stop';
 const ICARUS_CMD_TSIZER = 'icarusext.tsizer';
+const ICARUS_CMD_GTKWAVE = 'icarusext.openGtkwave';
 
 let run = new Runner();
 let status: vscode.StatusBarItem;
@@ -28,9 +29,14 @@ export function activate(context: vscode.ExtensionContext) {
 	let cmdtsizer = vscode.commands.registerCommand(ICARUS_CMD_TSIZER, (x) => {
 		run.tsizer(status, x || false);
 	});
+	let cmdgtkwave = vscode.commands.registerCommand(ICARUS_CMD_GTKWAVE, (x) => {
+		run.gtkwave();
+	});
+
 	context.subscriptions.push(cmdrun);
 	context.subscriptions.push(cmdstop);
 	context.subscriptions.push(cmdtsizer);
+	context.subscriptions.push(cmdgtkwave);
 
 	status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 10);
 	context.subscriptions.push(status);
