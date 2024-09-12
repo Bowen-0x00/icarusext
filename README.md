@@ -1,3 +1,9 @@
+
+# modified
+- Add open waveform by gtkwave command/button.
+- Work on systemverilog too.
+
+
 # Verilog Testbench Runner
 [![](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![](https://img.shields.io/static/v1?label=Icarus&message=Verilog&color=f368e0&style=flat-square)](https://github.com/steveicarus/iverilog)
